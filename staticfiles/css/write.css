@@ -1,0 +1,11 @@
+.write-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 100px auto 0 auto;
+  gap: 10px;
+}
+
+.write-form textarea {
+  height: 400px;
+}

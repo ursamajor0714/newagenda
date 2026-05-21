@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-inputs {
+  display: flex;
+  gap: 10px;
+}
