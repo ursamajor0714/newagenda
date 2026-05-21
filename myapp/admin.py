@@ -3,3 +3,5 @@ from .models import Post
 
 admin.site.register(Post)
 
+from django.contrib.auth.models import User
+
