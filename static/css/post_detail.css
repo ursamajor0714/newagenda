@@ -1,0 +1,72 @@
+.table-wrap {
+  margin-top: 100px;
+  background-color: #af9696;
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+button {
+  margin-top: 3px;
+  font-size: 16px;
+  width: 50px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+p {
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+
+.post-body {
+  word-break: break-all;
+  max-width: 170ch;
+  margin: 0 auto;
+  margin-top: 30px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 20px;
+}
+
+.comment {
+  margin: 20px auto 0 auto;
+  width: 79%;
+}
+
+.form {
+  margin: 20px auto 0 auto;
+  width: 1500px;
+  height: 35px;
+  margin-bottom: 100px;
+}
+.form input {
+  width: 80%;
+  height: 100%;
+}
+
+.comment-form {
+  display: flex;
+}
+
+.buttonfunc {
+  margin: 0 auto 40px auto;
+  width: fit-content;
+  margin-bottom: 40px;
+}
+
+.buttonfunc2 {
+  margin: 0 auto 40px auto;
+  width: fit-content;
+  margin-bottom: 100px;
+}
+
+.buttonfunc button,
+.buttonfunc2 button {
+  white-space: nowrap;
+  width: 200px;
+  height: 40px;
+}

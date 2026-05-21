@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="table-wrap">
+    <div class="post-header">
+        <p>제목▸ {{ post.title }}</p>
+        <p>작성자▸ {{ post.user }}</p>
+        <p>번호▸ {{ post.id }} | 추천▸ {{ post.likes }} | 반대▸ {{ post.hates }} | 댓글▸0 | 조회▸ {{ post.views }} | 작성시간▸ {{ post.date|date:"Y-m-d H:i" }}</p>
+            {% if prev_post %}
+            <a href="{% url 'post_detail' prev_post.id %}"><button>이전글</button></a>
+            {% else %}
+            <button>이전글</button>
+            {% endif %}
+            |
+            {% if next_post %}
+            <a href="{% url 'post_detail' next_post.id %}"><button>다음글</button></a>
+            {% else %}
+            <button>다음글</button>
+            {% endif %}
+
+            | <a href="{% url 'home' %}"><button>목록</button></a>
+            | <a href="{% url 'like_post' post.id %}"><button>추천</button></a> 
+            | <a href="{% url 'hate_post' post.id %}"><button>반대</button></a>
+            | <button>신고</button></p>
+</div>
+</div>
+
+
+<div class="post-body">
+    {{ post.content|linebreaks }}
+</div>
+
+
+<div class="comment">
+    {% for comment in comments %}
+    <p>{{ comment.user }} : {{ comment.content }}</p>
+    {% endfor %}
+</div>
+
+<form class="form comment-form" method="POST" action="{% url 'comment' post.id %}">
+    {% csrf_token %}
+    <input type="text" name="content" placeholder="댓글을 입력하세요">
+    <button type="submit">등록</button>
+</form>
+
+
+<script>
+    document.querySelector('.comment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const content = document.querySelector('input[name="content"]').value;
+        const scrollY = window.scrollY;
+        
+        fetch("{% url 'comment' post.id %}", {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `content=${content}`
+        })
+        .then(() => {
+            location.reload();
+            setTimeout(() => window.scrollTo(0, scrollY), 0);
+        });
+    });
+    </script>
+<div class ="buttonfunc">
+    <div class="buttonfunc">
+        {% if next_post %}
+        <a href="{% url 'post_detail' next_post.id %}"><button>다음글▶ {{ next_post.title }}</button></a>
+        {% else %}
+        <button>다음글</button>
+        {% endif %}
+    </div>
+    <div class="buttonfunc2">
+        {% if prev_post %}
+        <a href="{% url 'post_detail' prev_post.id %}"><button>◀이전글 {{ prev_post.title }}</button></a>
+        {% else %}
+        <button>이전글</button>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}

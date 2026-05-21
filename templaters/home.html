@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<nav class="navbar">
+<div class="nav-L">
+    <p>오늘의 접속자{{ today_visitors }}</p>
+    <p>오늘의 새글 {{ today_posts }}</p>
+    <p>오늘의 댓글 {{ today_comments }}</p>
+</div>
+<div class="nav-C">
+    <a href="{% url 'home' %}">홈으로 가기</a>
+</div>
+<div class="nav-R">
+    {% if user.is_authenticated %}
+    환영합니다 {{ user.username }} 님
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">로그아웃</button>
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}">로그인</a>
+    {% endif %}
+</div>
+</nav>
+
+
+
+<div class="table-wrap">
+<table>
+
+    <thead>
+    <tr>
+        <td>번호</td>
+        <td>글제목</td>
+        <td>작성자</td>
+        <td>날짜</td>
+        <td>조회수</td>
+        <td>추천</td>
+        <td>반대</td>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.id }}</td>
+        <td><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
+        <td>{{ post.user }}</td>
+        <td>{{ post.date|date:"Y-m-d H:i"}}</td>
+        <td>{{ post.views }}</td>
+        <td>{{ post.likes }}</td>
+        <td>{{ post.hates }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+
+<div class="pagination">
+
+    {% if posts.has_previous %}
+    <a href="?page={{ posts.previous_page_number }}">Prev</a>
+    {% else %}
+    <a href="#">Prev</a>
+    {% endif %}
+    
+    {{ posts.number }} / {{ posts.paginator.num_pages }}
+    
+    {% if posts.has_next %}
+    <a href="?page={{ posts.next_page_number }}">Next</a>
+    {% else %}
+    <a href="#">Next</a>
+    {% endif %}
+    </div>
+
+
+    <div class="search-bar">
+        {% url 'write' as write_url %}
+        <button onclick="window.location.href='{{ write_url }}'">글쓰기</button>
+        <form method="GET" action="{% url 'home' %}">
+            <select name="search_type" class="search-type">
+                <option value="title">제목</option>
+                <option value="content">내용</option>
+                <option value="title_content">제목+내용</option>
+                <option value="user">작성자</option>
+            </select>
+            <select name="search_period" class="search-period">
+                <option value="today">오늘</option>
+                <option value="week">일주일</option>
+                <option value="month">한달</option>
+                <option value="all">전체</option>
+            </select>
+            <input type="text" name="query">
+            <button type="submit">검색</button>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+{% endblock %}

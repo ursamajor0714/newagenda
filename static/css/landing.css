@@ -1,0 +1,154 @@
+.landing-wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.arrow-svg {
+  position: absolute;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  opacity: 0;
+  animation: draw 1s 1s forwards;
+  bottom: 280px;
+  right: 550px;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 500;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.landing-comeon {
+  position: absolute;
+  font-family: "Caveat", cursive;
+  opacity: 0;
+  animation:
+    fadeIn 1s 1s forwards,
+    bounce-Come 1s 1s infinite;
+  font-size: 50px;
+  bottom: 300px;
+  right: 450px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-Come {
+  0% {
+    transform: rotate(-15deg) scale(1);
+  }
+  50% {
+    transform: rotate(-15deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(-15deg) scale(1);
+  }
+}
+
+.landing-L,
+.landing-R,
+.landing-center {
+  flex: 1;
+}
+
+.landing-L {
+  text-align: right;
+  font-family: "Caveat", cursive;
+  font-size: 150px;
+  animation: bounce-L 1s infinite;
+}
+
+@keyframes bounce-L {
+  0% {
+    transform: rotate(-25deg) scale(1) translateX(-50px);
+  }
+  50% {
+    transform: rotate(-25deg) scale(1.2) translateX(-50px);
+  }
+  100% {
+    transform: rotate(-25deg) scale(1) translateX(-50px);
+  }
+}
+
+.landing-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing-high {
+  font-family: "Caveat", cursive;
+  font-size: 150px;
+  animation: bounce-H 1s infinite;
+}
+
+@keyframes bounce-H {
+  0% {
+    transform: scale(1) translateY(-50px);
+  }
+  50% {
+    transform: scale(1.2) translateY(-50px);
+  }
+  100% {
+    transform: scale(1) translateY(-50px);
+  }
+}
+
+.landing-button {
+  width: 200px;
+  height: 200px;
+  background-color: #ff6b6b;
+  border-radius: 50%;
+  border: none;
+  box-shadow:
+    0 15px 0 #c0392b,
+    0 20px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.landing-button:active {
+  box-shadow:
+    0 5px 0 #c0392b,
+    0 8px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(10px);
+}
+
+.landing-low {
+  font-family: "Caveat", cursive;
+  font-size: 130px;
+  transform: translateY(100px);
+}
+
+.landing-R {
+  text-align: left;
+  font-family: "Caveat", cursive;
+  font-size: 150px;
+  animation: bounce-R 1s infinite;
+}
+
+@keyframes bounce-R {
+  0% {
+    transform: rotate(25deg) scale(1) translateX(50px);
+  }
+  50% {
+    transform: rotate(25deg) scale(1.2) translateX(50px);
+  }
+  100% {
+    transform: rotate(25deg) scale(1) translateX(50px);
+  }
+}

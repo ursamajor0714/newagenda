@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/landing.css' %}" />
+{% endblock %}
+{% block content %}
+<div class="landing-wrapper">
+  <p class="landing-comeon">Come on in!</p>
+  <svg class="arrow-svg" width="310" height="200">
+    <path d="M 180 180 Q 200 120 140 100 Q 80 80 120 40 Q 140 10 100 0"
+          fill="none"
+          stroke="black"
+          stroke-width="2"
+          marker-end="url(#arrowhead)"/>
+    <defs>
+        <marker id="arrowhead" markerWidth="20" markerHeight="14" refX="10" refY="3.5" orient="auto">
+            <polygon points="0 0, 20 7, 0 14" fill="black"/>
+        </marker>
+    </defs>
+</svg>
+
+  <div class="landing-L">
+    <p>Fun!</p>
+  </div>
+
+  <div class="landing-center">
+    <div class="landing-high">
+      <p>Share!</p>
+    </div>
+
+    <a href="{% url 'home' %}">
+    <div class="landing-button">
+      <!-- 도넛모양 버튼 -->
+    </div>
+    </a>
+
+    <div class="landing-low">
+      <p>We are Our!</p>
+    </div>
+  </div>
+
+  <div class="landing-R">
+    <p>Play!</p>
+  </div>
+</div>
+
+{% endblock %}

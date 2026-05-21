@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="login-inputs">
+        {{ form.username }} 
+        {{ form.password }}
+    </div>
+    <div class="login-buttons">
+        <button type="submit">로그인</button>
+        <a href="{% url 'register' %}">회원가입</a>
+        <a href="{% url 'trap' %}">비밀번호 잊어버렸나요?</a>
+    </div>
+</form>
+{% endblock %}

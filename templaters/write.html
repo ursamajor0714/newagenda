@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/write.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<form class="write-form" method="POST" action="{% url 'write' %}">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="제목">
+    <textarea name="content" placeholder="
+    · 타인에게 상처가 되는 표현은 자제해주세요.
+    · 게시판 성격에 맞지 않는 글은 삭제될 수 있습니다.
+    · 불법 촬영물 등 관련 법률 위반 게시물은 즉시 삭제 및 신고됩니다.
+    · 서로를 존중하는 글을 작성해주세요. 😊
+    · 특히 임씨 성을 가진 진휘란 이름을 쓰시는분은 특히 더 자제 부탁드려요.🙏🙏🙏🙏"></textarea>
+    <button type="submit">등록</button>
+</form>
+
+
+{% endblock %}

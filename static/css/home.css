@@ -1,0 +1,122 @@
+.table-wrap {
+  margin-top: 100px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(135, 206, 235, 0.1);
+  padding: 30px;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+thead {
+  background-color: skyblue;
+}
+
+td {
+  border-bottom: 1px solid #333;
+}
+
+table td:nth-child(1) {
+  width: 5%;
+  text-align: center;
+}
+table td:nth-child(2) {
+  width: 60%;
+  padding-left: 20px;
+}
+table td:nth-child(3) {
+  width: 15%;
+  text-align: center;
+}
+table td:nth-child(4) {
+  width: 10%;
+  text-align: center;
+}
+table td:nth-child(5) {
+  width: 5%;
+  text-align: center;
+}
+table td:nth-child(6) {
+  width: 2.5%;
+  text-align: center;
+}
+table td:nth-child(7) {
+  width: 2.5%;
+  text-align: center;
+}
+
+.pagination {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.search-bar {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  z-index: 999;
+}
+
+.nav-L,
+.nav-C,
+.nav-R {
+  flex: 1;
+}
+
+.nav-L {
+  color: white;
+  display: flex;
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 25px;
+}
+
+.nav-L p {
+  margin-right: 50px;
+}
+
+.nav-C input {
+  height: 30px;
+  width: 350px;
+  text-align: center;
+}
+
+.nav-C {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+}
+.nav-C a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-R {
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 30px;
+  gap: 20px;
+}
+
+.nav-R a {
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 5px 10px;
+}
