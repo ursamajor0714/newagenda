@@ -92,15 +92,15 @@ def register(request):
         form = CustomRegisterForm()
     return render(request, 'register.html', {'form': form})
 
-@login_required
 def comment(request, pk):
     post = Post.objects.get(pk=pk)
     if request.method == 'POST':
         content = request.POST.get('content')
+        user = request.user.username if request.user.is_authenticated else '익명'
         Comment.objects.create(
             post=post,
             content=content,
-            user=request.user.username
+            user=user,
         )
     return redirect('post_detail', pk=pk)
 
@@ -108,10 +108,11 @@ def write(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
+        user = request.user.username if request.user.is_authenticated else '익명'
         Post.objects.create(
             title=title,
             content=content,
-            user=request.user.username,
+            user=user,
         )
         return redirect('home')
     return render(request, 'write.html')
