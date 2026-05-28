@@ -119,4 +119,3 @@ def write(request):
 
 def trap(request):
     return render(request, 'trap.html')
-
