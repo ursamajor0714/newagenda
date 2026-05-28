@@ -15,7 +15,7 @@ def home(request):
     query = request.GET.get('query', '')
     search_type = request.GET.get('search_type', 'title')
     search_period = request.GET.get('search_period', 'all')
-    posts = Post.objects.annotate(comment_count=Count('comment_set')).order_by('-id')
+    posts = Post.objects.annotate(comment_count=Count('comment')).order_by('-id')
     today = timezone.now().date()
     today_posts = Post.objects.filter(date__date=today).count()
     today_comments = Comment.objects.filter(date__date=today).count()
